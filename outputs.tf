@@ -5,3 +5,7 @@ output "sql_database" {
 output "private_vpc_network" {
   value = google_compute_network.network.self_link
 }
+
+output "private_vpc_network_test" {
+  value = google_compute_network.network.self_link
+}
