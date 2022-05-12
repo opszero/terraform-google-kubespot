@@ -23,4 +23,3 @@ module "gcp" {
     "google" = "google.example"
   }
 }
-

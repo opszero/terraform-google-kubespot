@@ -12,6 +12,12 @@ resource "google_container_cluster" "cluster" {
   min_master_version = var.cluster_version
 
   enable_autopilot = true
+  /*
+  addons_config {    # enable on standard GKE cluster 
+    http_load_balancing {
+      disabled = true
+    }
+  }*/
 
   master_auth {
     client_certificate_config {
