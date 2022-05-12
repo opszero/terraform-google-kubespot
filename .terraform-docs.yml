@@ -17,14 +17,14 @@ content: |-
     {{ .Resources }}
     {{ .Outputs }}
 output:
-  file: README.md
+  file: test.md
   mode: inject
   template: |-
     <!-- BEGIN_TF_DOCS -->
     {{ .Content }}
     <!-- END_TF_DOCS -->
 output-values:
-  enabled: false
+  enabled: true
   from: ""
 
 sort:
