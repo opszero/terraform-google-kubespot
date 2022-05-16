@@ -69,3 +69,7 @@ variable "sql_master_username" {
 variable "sql_master_password" {
   default = ""
 }
+
+variable "csi_secrets_store_enabled" {
+  default = true
+}
