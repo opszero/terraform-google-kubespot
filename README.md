@@ -58,24 +58,24 @@ need help!
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | n/a | `string` | `"1.21"` | no |
-| <a name="input_csi_secrets_store_enabled"></a> [csi\_secrets\_store\_enabled](#input\_csi\_secrets\_store\_enabled) | n/a | `bool` | `true` | no |
-| <a name="input_environment_name"></a> [environment\_name](#input\_environment\_name) | n/a | `string` | n/a | yes |
-| <a name="input_foxpass_api_key"></a> [foxpass\_api\_key](#input\_foxpass\_api\_key) | the following below are required for setting up the vpn | `string` | `""` | no |
+| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | The minimum version of the master | `string` | `"1.21"` | no |
+| <a name="input_csi_secrets_store_enabled"></a> [csi\_secrets\_store\_enabled](#input\_csi\_secrets\_store\_enabled) | Specify whether the CSI driver is enabled | `bool` | `true` | no |
+| <a name="input_environment_name"></a> [environment\_name](#input\_environment\_name) | The name of the environment to create resources | `string` | n/a | yes |
+| <a name="input_foxpass_api_key"></a> [foxpass\_api\_key](#input\_foxpass\_api\_key) | The API key of foxpass | `string` | `""` | no |
 | <a name="input_foxpass_vpn_psk"></a> [foxpass\_vpn\_psk](#input\_foxpass\_vpn\_psk) | use this for psk generation https://cloud.google.com/vpn/docs/how-to/generating-pre-shared-key | `string` | `""` | no |
-| <a name="input_nodes_desired_capacity"></a> [nodes\_desired\_capacity](#input\_nodes\_desired\_capacity) | n/a | `number` | `1` | no |
-| <a name="input_nodes_instance_type"></a> [nodes\_instance\_type](#input\_nodes\_instance\_type) | n/a | `string` | `"n1-standard-1"` | no |
-| <a name="input_nodes_max_size"></a> [nodes\_max\_size](#input\_nodes\_max\_size) | n/a | `number` | `1` | no |
-| <a name="input_nodes_min_size"></a> [nodes\_min\_size](#input\_nodes\_min\_size) | n/a | `number` | `1` | no |
-| <a name="input_redis_enabled"></a> [redis\_enabled](#input\_redis\_enabled) | n/a | `bool` | `false` | no |
-| <a name="input_redis_ha_enabled"></a> [redis\_ha\_enabled](#input\_redis\_ha\_enabled) | n/a | `bool` | `false` | no |
-| <a name="input_redis_memory_in_gb"></a> [redis\_memory\_in\_gb](#input\_redis\_memory\_in\_gb) | n/a | `number` | `1` | no |
-| <a name="input_region"></a> [region](#input\_region) | n/a | `string` | `"us-central1"` | no |
-| <a name="input_sql_enabled"></a> [sql\_enabled](#input\_sql\_enabled) | n/a | `bool` | `false` | no |
-| <a name="input_sql_engine"></a> [sql\_engine](#input\_sql\_engine) | n/a | `string` | `"POSTGRES_13"` | no |
-| <a name="input_sql_instance_class"></a> [sql\_instance\_class](#input\_sql\_instance\_class) | n/a | `string` | `"db-f1-micro"` | no |
-| <a name="input_sql_master_password"></a> [sql\_master\_password](#input\_sql\_master\_password) | n/a | `string` | `""` | no |
-| <a name="input_sql_master_username"></a> [sql\_master\_username](#input\_sql\_master\_username) | n/a | `string` | `""` | no |
+| <a name="input_nodes_desired_capacity"></a> [nodes\_desired\_capacity](#input\_nodes\_desired\_capacity) | Desired number of nodes in the NodePool | `number` | `1` | no |
+| <a name="input_nodes_instance_type"></a> [nodes\_instance\_type](#input\_nodes\_instance\_type) | The name of a Google Compute Engine machine type. Defaults to e2-medium | `string` | `"n1-standard-1"` | no |
+| <a name="input_nodes_max_size"></a> [nodes\_max\_size](#input\_nodes\_max\_size) | Maximum number of nodes in the NodePool. Must be >= min\_node\_count | `number` | `1` | no |
+| <a name="input_nodes_min_size"></a> [nodes\_min\_size](#input\_nodes\_min\_size) | Minimum number of nodes in the NodePool. Must be >=0 and <= max\_node\_count | `number` | `1` | no |
+| <a name="input_redis_enabled"></a> [redis\_enabled](#input\_redis\_enabled) | Specify whether the redis cluster is enabled | `bool` | `false` | no |
+| <a name="input_redis_ha_enabled"></a> [redis\_ha\_enabled](#input\_redis\_ha\_enabled) | Specify whether HA is enabled for redis | `bool` | `false` | no |
+| <a name="input_redis_memory_in_gb"></a> [redis\_memory\_in\_gb](#input\_redis\_memory\_in\_gb) | Redis memory size in GiB | `number` | `1` | no |
+| <a name="input_region"></a> [region](#input\_region) | The location (region or zone) in which the cluster master will be created | `string` | `"us-central1"` | no |
+| <a name="input_sql_enabled"></a> [sql\_enabled](#input\_sql\_enabled) | Specify whether the sql instance is enabled | `bool` | `false` | no |
+| <a name="input_sql_engine"></a> [sql\_engine](#input\_sql\_engine) | The sql version to use | `string` | `"POSTGRES_13"` | no |
+| <a name="input_sql_instance_class"></a> [sql\_instance\_class](#input\_sql\_instance\_class) | The machine type to use | `string` | `"db-f1-micro"` | no |
+| <a name="input_sql_master_password"></a> [sql\_master\_password](#input\_sql\_master\_password) | The password for the db user | `string` | `""` | no |
+| <a name="input_sql_master_username"></a> [sql\_master\_username](#input\_sql\_master\_username) | The name of the db user | `string` | `""` | no |
 ## Resources
 
 | Name | Type |
