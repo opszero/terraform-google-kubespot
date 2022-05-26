@@ -5,8 +5,8 @@ resource "helm_release" "csi_secrets_store" {
   repository = "https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts"
   chart      = "secrets-store-csi-driver"
 
-  namespace        = "kube-system"
-  create_namespace = false
+  namespace        = "csi"
+  create_namespace = true
 }
 
 data "http" "csi_secrets_store_gcp_provider" {
