@@ -1,6 +1,8 @@
 <!-- BEGIN_TF_DOCS -->
 # Kubespot (GCP)
 
+| No Longer in Development.
+
 <img src="http://assets.opszero.com.s3.amazonaws.com/images/auditkube.png" width="200px" />
 
 Compliance Oriented Kubernetes Setup for AWS, Google Cloud and Microsoft Azure.
