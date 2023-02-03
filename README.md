@@ -1,7 +1,7 @@
 <!-- BEGIN_TF_DOCS -->
 # Kubespot (GCP)
 
-<img src="http://assets.opszero.com.s3.amazonaws.com/images/auditkube.png" width="200px" />
+<img src="http://assets.opszero.com/images/auditkube.png" width="200px" />
 
 Compliance Oriented Kubernetes Setup for Google Cloud.
 
