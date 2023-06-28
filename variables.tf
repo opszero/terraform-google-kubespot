@@ -4,7 +4,7 @@ variable "environment_name" {
 }
 
 variable "cluster_version" {
-  default     = "1.21"
+  default     = "1.27"
   description = "The minimum version of the master"
 }
 
