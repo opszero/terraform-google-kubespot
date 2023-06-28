@@ -39,6 +39,7 @@ brew install kubectl kubernetes-helm google-cloud-sdk terraform
 | <a name="input_nodes_instance_type"></a> [nodes\_instance\_type](#input\_nodes\_instance\_type) | The name of a Google Compute Engine machine type. Defaults to e2-medium | `string` | `"n1-standard-1"` | no |
 | <a name="input_nodes_max_size"></a> [nodes\_max\_size](#input\_nodes\_max\_size) | Maximum number of nodes in the NodePool. Must be >= min\_node\_count | `number` | `1` | no |
 | <a name="input_nodes_min_size"></a> [nodes\_min\_size](#input\_nodes\_min\_size) | Minimum number of nodes in the NodePool. Must be >=0 and <= max\_node\_count | `number` | `1` | no |
+| <a name="input_project"></a> [project](#input\_project) | The Google Project that will host the cluster | `string` | n/a | yes |
 | <a name="input_redis_enabled"></a> [redis\_enabled](#input\_redis\_enabled) | Specify whether the redis cluster is enabled | `bool` | `false` | no |
 | <a name="input_redis_ha_enabled"></a> [redis\_ha\_enabled](#input\_redis\_ha\_enabled) | Specify whether HA is enabled for redis | `bool` | `false` | no |
 | <a name="input_redis_memory_in_gb"></a> [redis\_memory\_in\_gb](#input\_redis\_memory\_in\_gb) | Redis memory size in GiB | `number` | `1` | no |
