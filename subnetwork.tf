@@ -1,6 +1,7 @@
 resource "google_compute_subnetwork" "subnet" {
-  name   = var.environment_name
-  region = var.region
+  name    = var.environment_name
+  region  = var.region
+  project = var.project
 
   network = google_compute_network.network.self_link
 

@@ -13,6 +13,11 @@ variable "region" {
   description = "The location (region or zone) in which the cluster master will be created"
 }
 
+variable "project" {
+  type        = string
+  description = "The Google Project that will host the cluster"
+}
+
 variable "nodes_instance_type" {
   default     = "n1-standard-1"
   description = "The name of a Google Compute Engine machine type. Defaults to e2-medium"
