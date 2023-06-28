@@ -4,7 +4,7 @@ variable "environment_name" {
 }
 
 variable "cluster_version" {
-  default     = "1.21"
+  default     = "1.27"
   description = "The minimum version of the master"
 }
 
@@ -31,19 +31,6 @@ variable "nodes_min_size" {
 variable "nodes_max_size" {
   default     = 1
   description = "Maximum number of nodes in the NodePool. Must be >= min_node_count"
-}
-
-//the following below are required for setting up the vpn
-variable "foxpass_api_key" {
-  type        = string
-  default     = ""
-  description = "The API key of foxpass"
-}
-
-variable "foxpass_vpn_psk" {
-  type        = string
-  description = "use this for psk generation https://cloud.google.com/vpn/docs/how-to/generating-pre-shared-key"
-  default     = ""
 }
 
 variable "redis_enabled" {
