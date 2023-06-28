@@ -1,8 +1,9 @@
 resource "google_kms_key_ring" "keyring" {
-  name     = var.environment_name
+  name    = var.environment_name
+  project = var.project
+
   location = "global"
 
-  project = var.project
   lifecycle {
     prevent_destroy = true
   }

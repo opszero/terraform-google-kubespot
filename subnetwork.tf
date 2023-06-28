@@ -19,6 +19,7 @@ resource "google_compute_subnetwork" "subnet" {
 
 resource "google_compute_network" "network" {
   name                    = var.environment_name
+  project                 = var.project
   auto_create_subnetworks = false
 }
 
