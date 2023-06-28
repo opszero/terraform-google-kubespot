@@ -35,8 +35,6 @@ brew install kubectl kubernetes-helm google-cloud-sdk terraform
 | <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | The minimum version of the master | `string` | `"1.27"` | no |
 | <a name="input_csi_secrets_store_enabled"></a> [csi\_secrets\_store\_enabled](#input\_csi\_secrets\_store\_enabled) | Specify whether the CSI driver is enabled | `bool` | `true` | no |
 | <a name="input_environment_name"></a> [environment\_name](#input\_environment\_name) | The name of the environment to create resources | `string` | n/a | yes |
-| <a name="input_foxpass_api_key"></a> [foxpass\_api\_key](#input\_foxpass\_api\_key) | The API key of foxpass | `string` | `""` | no |
-| <a name="input_foxpass_vpn_psk"></a> [foxpass\_vpn\_psk](#input\_foxpass\_vpn\_psk) | use this for psk generation https://cloud.google.com/vpn/docs/how-to/generating-pre-shared-key | `string` | `""` | no |
 | <a name="input_nodes_desired_capacity"></a> [nodes\_desired\_capacity](#input\_nodes\_desired\_capacity) | Desired number of nodes in the NodePool | `number` | `1` | no |
 | <a name="input_nodes_instance_type"></a> [nodes\_instance\_type](#input\_nodes\_instance\_type) | The name of a Google Compute Engine machine type. Defaults to e2-medium | `string` | `"n1-standard-1"` | no |
 | <a name="input_nodes_max_size"></a> [nodes\_max\_size](#input\_nodes\_max\_size) | Maximum number of nodes in the NodePool. Must be >= min\_node\_count | `number` | `1` | no |
