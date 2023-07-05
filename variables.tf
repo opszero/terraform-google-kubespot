@@ -18,26 +18,6 @@ variable "project" {
   description = "The Google Project that will host the cluster"
 }
 
-variable "nodes_instance_type" {
-  default     = "n1-standard-1"
-  description = "The name of a Google Compute Engine machine type. Defaults to e2-medium"
-}
-
-variable "nodes_desired_capacity" {
-  default     = 1
-  description = "Desired number of nodes in the NodePool"
-}
-
-variable "nodes_min_size" {
-  default     = 1
-  description = "Minimum number of nodes in the NodePool. Must be >=0 and <= max_node_count"
-}
-
-variable "nodes_max_size" {
-  default     = 1
-  description = "Maximum number of nodes in the NodePool. Must be >= min_node_count"
-}
-
 variable "redis_enabled" {
   default     = false
   description = "Specify whether the redis cluster is enabled"
