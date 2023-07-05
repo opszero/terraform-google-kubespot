@@ -10,6 +10,17 @@ Compliance Oriented Kubernetes Setup for Google Cloud.
 ```
 brew install kubectl kubernetes-helm google-cloud-sdk terraform
 ```
+
+# Terraform usage
+
+```
+gcloud auth activate-service-account --key-file=./account.json
+terraform init && terraform get -update && terraform apply
+
+
+gcloud config set account foo@opszero.com # Set account name
+gcloud container clusters get-credentials <clustername> --region us-central1
+```
 # Pro Support
 
 <a href="https://www.opszero.com"><img src="https://assets.opszero.com/images/opszero_11_29_2016.png" width="300px"/></a>
@@ -35,10 +46,6 @@ brew install kubectl kubernetes-helm google-cloud-sdk terraform
 | <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | The minimum version of the master | `string` | `"1.27"` | no |
 | <a name="input_csi_secrets_store_enabled"></a> [csi\_secrets\_store\_enabled](#input\_csi\_secrets\_store\_enabled) | Specify whether the CSI driver is enabled | `bool` | `true` | no |
 | <a name="input_environment_name"></a> [environment\_name](#input\_environment\_name) | The name of the environment to create resources | `string` | n/a | yes |
-| <a name="input_nodes_desired_capacity"></a> [nodes\_desired\_capacity](#input\_nodes\_desired\_capacity) | Desired number of nodes in the NodePool | `number` | `1` | no |
-| <a name="input_nodes_instance_type"></a> [nodes\_instance\_type](#input\_nodes\_instance\_type) | The name of a Google Compute Engine machine type. Defaults to e2-medium | `string` | `"n1-standard-1"` | no |
-| <a name="input_nodes_max_size"></a> [nodes\_max\_size](#input\_nodes\_max\_size) | Maximum number of nodes in the NodePool. Must be >= min\_node\_count | `number` | `1` | no |
-| <a name="input_nodes_min_size"></a> [nodes\_min\_size](#input\_nodes\_min\_size) | Minimum number of nodes in the NodePool. Must be >=0 and <= max\_node\_count | `number` | `1` | no |
 | <a name="input_project"></a> [project](#input\_project) | The Google Project that will host the cluster | `string` | n/a | yes |
 | <a name="input_redis_enabled"></a> [redis\_enabled](#input\_redis\_enabled) | Specify whether the redis cluster is enabled | `bool` | `false` | no |
 | <a name="input_redis_ha_enabled"></a> [redis\_ha\_enabled](#input\_redis\_ha\_enabled) | Specify whether HA is enabled for redis | `bool` | `false` | no |
