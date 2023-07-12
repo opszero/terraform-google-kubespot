@@ -22,6 +22,8 @@ resource "google_container_cluster" "cluster" {
   }
 
   monitoring_config {
-    enable_components = [ "SYSTEM_COMPONENTS" ]
+    enable_components = ["SYSTEM_COMPONENTS"]
   }
+
+  tags = local.tags
 }
