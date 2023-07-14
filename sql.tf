@@ -13,6 +13,7 @@ resource "google_sql_database_instance" "default" {
       ipv4_enabled    = "false"
       private_network = google_compute_network.network.self_link
     }
+    user_labels = local.tags
   }
 
   lifecycle {

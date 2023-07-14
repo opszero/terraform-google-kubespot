@@ -62,3 +62,8 @@ variable "csi_secrets_store_enabled" {
   default     = true
   description = "Specify whether the CSI driver is enabled"
 }
+
+variable "tags" {
+  description = "Terraform map to create custom tags for the Google resources"
+  default     = {}
+}
