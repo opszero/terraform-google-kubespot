@@ -56,6 +56,7 @@ gcloud container clusters get-credentials <clustername> --region us-central1
 | <a name="input_sql_instance_class"></a> [sql\_instance\_class](#input\_sql\_instance\_class) | The machine type to use | `string` | `"db-f1-micro"` | no |
 | <a name="input_sql_master_password"></a> [sql\_master\_password](#input\_sql\_master\_password) | The password for the db user | `string` | `""` | no |
 | <a name="input_sql_master_username"></a> [sql\_master\_username](#input\_sql\_master\_username) | The name of the db user | `string` | `""` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | Terraform map to create custom tags for the Google resources | `map` | `{}` | no |
 ## Resources
 
 | Name | Type |
