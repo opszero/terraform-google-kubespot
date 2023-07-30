@@ -39,7 +39,7 @@ variable "sql_enabled" {
 }
 
 variable "sql_engine" {
-  default     = "POSTGRES_13"
+  default     = "POSTGRES_15"
   description = "The sql version to use"
 }
 
