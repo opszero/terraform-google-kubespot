@@ -52,7 +52,7 @@ gcloud container clusters get-credentials <clustername> --region us-central1
 | <a name="input_redis_memory_in_gb"></a> [redis\_memory\_in\_gb](#input\_redis\_memory\_in\_gb) | Redis memory size in GiB | `number` | `1` | no |
 | <a name="input_region"></a> [region](#input\_region) | The location (region or zone) in which the cluster master will be created | `string` | `"us-central1"` | no |
 | <a name="input_sql_enabled"></a> [sql\_enabled](#input\_sql\_enabled) | Specify whether the sql instance is enabled | `bool` | `false` | no |
-| <a name="input_sql_engine"></a> [sql\_engine](#input\_sql\_engine) | The sql version to use | `string` | `"POSTGRES_13"` | no |
+| <a name="input_sql_engine"></a> [sql\_engine](#input\_sql\_engine) | The sql version to use | `string` | `"POSTGRES_15"` | no |
 | <a name="input_sql_instance_class"></a> [sql\_instance\_class](#input\_sql\_instance\_class) | The machine type to use | `string` | `"db-f1-micro"` | no |
 | <a name="input_sql_master_password"></a> [sql\_master\_password](#input\_sql\_master\_password) | The password for the db user | `string` | `""` | no |
 | <a name="input_sql_master_username"></a> [sql\_master\_username](#input\_sql\_master\_username) | The name of the db user | `string` | `""` | no |
