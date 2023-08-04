@@ -3,7 +3,10 @@ resource "random_id" "server" {
 }
 
 resource "google_sql_database_instance" "default" {
-  count            = var.sql_enabled ? 1 : 0
+  count = var.sql_enabled ? 1 : 0
+
+  project = var.project
+
   name             = "${var.environment_name}-${random_id.server.hex}"
   database_version = var.sql_engine
   depends_on       = [null_resource.sql_vpc_lock]
@@ -23,6 +26,8 @@ resource "google_sql_database_instance" "default" {
 
 resource "google_sql_user" "user" {
   count = var.sql_enabled ? 1 : 0
+
+  project = var.project
 
   name     = var.sql_master_username
   password = var.sql_master_password
