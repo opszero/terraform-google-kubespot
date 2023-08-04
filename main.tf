@@ -13,6 +13,12 @@ resource "google_container_cluster" "cluster" {
 
   enable_autopilot = true
 
+  node_pool_auto_config {
+    network_tags {
+      tags = local.tags
+    }
+  }
+
   ip_allocation_policy {}
 
   master_auth {
