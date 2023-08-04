@@ -1,5 +1,5 @@
 locals {
   tags = merge(var.tags, {
-    "KubespotEnvironment" = var.environment_name
+    "kubespot_env" = var.environment_name
   })
 }
