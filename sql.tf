@@ -6,6 +6,7 @@ resource "google_sql_database_instance" "default" {
   count = var.sql_enabled ? 1 : 0
 
   project = var.project
+  region  = var.region
 
   name             = "${var.environment_name}-${random_id.server.hex}"
   database_version = var.sql_engine
