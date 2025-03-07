@@ -1,5 +1,5 @@
 resource "google_compute_subnetwork" "subnet" {
-  name    = var.environment_name
+  name    = var.name
   region  = var.region
   project = var.project
 
@@ -18,13 +18,13 @@ resource "google_compute_subnetwork" "subnet" {
 }
 
 resource "google_compute_network" "network" {
-  name                    = var.environment_name
+  name                    = var.name
   project                 = var.project
   auto_create_subnetworks = false
 }
 
 resource "google_compute_global_address" "private_ip_address" {
-  name          = var.environment_name
+  name          = var.name
   project       = var.project
   purpose       = "VPC_PEERING"
   address_type  = "INTERNAL"

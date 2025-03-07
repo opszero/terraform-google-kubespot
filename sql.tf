@@ -8,7 +8,43 @@ resource "google_sql_database_instance" "default" {
   project = var.project
   region  = var.region
 
-  name             = "${var.environment_name}-${random_id.server.hex}"
+  name             = "${var.name}-${random_id.server.hex}"
+  database_version = var.sql_engine
+  depends_on       = [null_resource.sql_vpc_lock]
+  settings {
+    tier = var.sql_instance_class
+    ip_configuration {
+      ipv4_enabled    = "false"
+      private_network = google_compute_network.network.self_link
+    }
+    user_labels = local.tags
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "google_sql_user" "user" {
+  count = var.sql_enabled ? 1 : 0
+
+  project = var.project
+
+  name     = var.sql_master_username
+  password = var.sql_master_password
+  instance = google_sql_database_instance.default[0].name
+}
+resource "random_id" "server" {
+  byte_length = 3
+}
+
+resource "google_sql_database_instance" "default" {
+  count = var.sql_enabled ? 1 : 0
+
+  project = var.project
+  region  = var.region
+
+  name             = "${var.name}-${random_id.server.hex}"
   database_version = var.sql_engine
   depends_on       = [null_resource.sql_vpc_lock]
   settings {

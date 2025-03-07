@@ -1,7 +1,7 @@
 resource "google_redis_instance" "cache" {
-  count = var.redis_enabled ? 1 : 0
-
-  name           = var.environment_name
+  count          = var.redis_enabled ? 1 : 0
+  project        = var.project
+  name           = var.name
   memory_size_gb = var.redis_memory_in_gb
 
   authorized_network = google_compute_network.network.self_link

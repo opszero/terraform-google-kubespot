@@ -36,7 +36,7 @@ gcloud container clusters get-credentials <clustername> --region us-central1
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | The minimum version of the master | `string` | `"1.27"` | no |
 | <a name="input_csi_secrets_store_enabled"></a> [csi\_secrets\_store\_enabled](#input\_csi\_secrets\_store\_enabled) | Specify whether the CSI driver is enabled | `bool` | `true` | no |
-| <a name="input_environment_name"></a> [environment\_name](#input\_environment\_name) | The name of the environment to create resources | `string` | n/a | yes |
+| <a name="input_name"></a> [environment\_name](#input\_environment\_name) | The name of the environment to create resources | `string` | n/a | yes |
 | <a name="input_project"></a> [project](#input\_project) | The Google Project that will host the cluster | `string` | n/a | yes |
 | <a name="input_redis_enabled"></a> [redis\_enabled](#input\_redis\_enabled) | Specify whether the redis cluster is enabled | `bool` | `false` | no |
 | <a name="input_redis_ha_enabled"></a> [redis\_ha\_enabled](#input\_redis\_ha\_enabled) | Specify whether HA is enabled for redis | `bool` | `false` | no |
