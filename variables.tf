@@ -54,7 +54,7 @@ variable "sql_master_username" {
 }
 
 variable "sql_master_password" {
-  default     = ""
+  default     = "password"
   description = "The password for the db user"
 }
 
@@ -70,7 +70,7 @@ variable "tags" {
 
 variable "name" {
   type        = string
-  default     = "test"
+  default     = ""
   description = "Name of the resource. Provided by the client when the resource is created. "
 }
 
@@ -181,4 +181,10 @@ variable "min_master_version" {
   type        = string
   default     = ""
   description = "The minimum version of the master. "
+}
+
+variable "kubectl_config_path" {
+  description = "Path to the kubectl config file. Defaults to $HOME/.kube/config"
+  type        = string
+  default     = ""
 }

@@ -1,1 +1,4 @@
 /.idea/
+/examples/gcp/terraform.tfstate.1741327109.backup
+/examples/gcp/terraform.tfstate.1741327175.backup
+/examples/gcp/.terraform.lock.hcl

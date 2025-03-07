@@ -11,7 +11,6 @@ resource "google_container_cluster" "primary" {
   private_cluster_config {
     enable_private_nodes    = true
     enable_private_endpoint = false
-    master_ipv4_cidr_block  = "172.16.0.0/28"
   }
 
   node_config {
@@ -22,21 +21,22 @@ resource "google_container_cluster" "primary" {
   lifecycle {
     ignore_changes = [initial_node_count]
   }
-
   deletion_protection = false
   ip_allocation_policy {}
+
   master_auth {
     client_certificate_config {
       issue_client_certificate = false
     }
   }
+
   monitoring_config {
     enable_components = ["SYSTEM_COMPONENTS"]
   }
 }
 
 resource "google_container_node_pool" "node_pool" {
-  name               = var.name
+  name               = "${var.name}-node-pool"
   project            = var.project
   location           = var.location
   cluster            = google_container_cluster.primary.id
@@ -66,9 +66,20 @@ resource "google_container_node_pool" "node_pool" {
     ignore_changes        = [initial_node_count]
     create_before_destroy = false
   }
+
   timeouts {
     create = var.cluster_create_timeouts
     update = var.cluster_update_timeouts
     delete = var.cluster_delete_timeouts
   }
+}
+
+resource "null_resource" "configure_kubectl" {
+  provisioner "local-exec" {
+    command = "gcloud container clusters get-credentials ${var.name} --zone ${var.location} --project ${var.project}"
+    environment = {
+      KUBECONFIG = var.kubectl_config_path != "" ? var.kubectl_config_path : ""
+    }
+  }
+  depends_on = [google_container_node_pool.node_pool]
 }
