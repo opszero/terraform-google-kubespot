@@ -1,10 +1,27 @@
+data "google_client_config" "default" {}
+
+provider "helm" {
+  kubernetes {
+    host                   = "https://${google_container_cluster.primary.endpoint}"
+    token                  = data.google_client_config.default.access_token
+    cluster_ca_certificate = base64decode(google_container_cluster.primary.master_auth.0.cluster_ca_certificate)
+  }
+}
+
+provider "kubernetes" {
+  host                   = "https://${google_container_cluster.primary.endpoint}"
+  token                  = data.google_client_config.default.access_token
+  cluster_ca_certificate = base64decode(google_container_cluster.primary.master_auth.0.cluster_ca_certificate)
+}
+
+
 resource "google_container_cluster" "primary" {
-  name                     = var.name
+  name                     = var.environment_name
   project                  = var.project
   network                  = google_compute_network.network.id
   subnetwork               = google_compute_subnetwork.subnet.id
-  remove_default_node_pool = var.remove_default_node_pool
   location                 = var.location
+  remove_default_node_pool = var.remove_default_node_pool
   initial_node_count       = var.initial_node_count
   min_master_version       = var.min_master_version
 
@@ -13,14 +30,6 @@ resource "google_container_cluster" "primary" {
     enable_private_endpoint = false
   }
 
-  node_config {
-    preemptible  = true
-    machine_type = var.machine_type
-  }
-
-  lifecycle {
-    ignore_changes = [initial_node_count]
-  }
   deletion_protection = false
   ip_allocation_policy {}
 
@@ -36,7 +45,7 @@ resource "google_container_cluster" "primary" {
 }
 
 resource "google_container_node_pool" "node_pool" {
-  name               = "${var.name}-node-pool"
+  name               = "${var.environment_name}-node-pool"
   project            = var.project
   location           = var.location
   cluster            = google_container_cluster.primary.id
@@ -66,7 +75,6 @@ resource "google_container_node_pool" "node_pool" {
     ignore_changes        = [initial_node_count]
     create_before_destroy = false
   }
-
   timeouts {
     create = var.cluster_create_timeouts
     update = var.cluster_update_timeouts
@@ -76,7 +84,7 @@ resource "google_container_node_pool" "node_pool" {
 
 resource "null_resource" "configure_kubectl" {
   provisioner "local-exec" {
-    command = "gcloud container clusters get-credentials ${var.name} --zone ${var.location} --project ${var.project}"
+    command = "gcloud container clusters get-credentials ${var.environment_name} --zone ${var.location} --project ${var.project}"
     environment = {
       KUBECONFIG = var.kubectl_config_path != "" ? var.kubectl_config_path : ""
     }

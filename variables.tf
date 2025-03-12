@@ -4,13 +4,13 @@ variable "cluster_version" {
 }
 
 variable "region" {
-  default     = "us-central1"
+  default     = ""
   description = "The location (region or zone) in which the cluster master will be created"
 }
 
 variable "project" {
   type        = string
-  description = "The Google Project that will host the cluster"
+  description = "The Google project that will host the cluster"
 }
 
 variable "redis_enabled" {
@@ -54,7 +54,7 @@ variable "sql_master_username" {
 }
 
 variable "sql_master_password" {
-  default     = "password"
+  default     = ""
   description = "The password for the db user"
 }
 
@@ -68,7 +68,7 @@ variable "tags" {
   default     = {}
 }
 
-variable "name" {
+variable "environment_name" {
   type        = string
   default     = ""
   description = "Name of the resource. Provided by the client when the resource is created. "

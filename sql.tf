@@ -8,7 +8,7 @@ resource "google_sql_database_instance" "default" {
   project = var.project
   region  = var.region
 
-  name             = "${var.name}-${random_id.server.hex}"
+  name             = "${var.environment_name}-${random_id.server.hex}"
   database_version = var.sql_engine
   depends_on       = [null_resource.sql_vpc_lock]
   settings {
