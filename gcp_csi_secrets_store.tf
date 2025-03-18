@@ -1,12 +1,12 @@
 resource "helm_release" "csi_secrets_store" {
   count = var.csi_secrets_store_enabled ? 1 : 0
 
-  name       = "csi-secrets-store"
-  repository = "https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts"
-  chart      = "secrets-store-csi-driver"
-
+  name             = "csi-secrets-store"
+  repository       = "https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts"
+  chart            = "secrets-store-csi-driver"
   namespace        = "csi"
   create_namespace = true
+  depends_on       = [google_container_cluster.primary, google_container_node_pool.node_pool]
 }
 
 data "http" "csi_secrets_store_gcp_provider" {
@@ -25,6 +25,7 @@ resource "null_resource" "csi_secrets_store_aws_provider" {
   depends_on = [helm_release.csi_secrets_store]
 
   provisioner "local-exec" {
-    command = "kubectl apply -f -<<EOF\n${data.http.csi_secrets_store_gcp_provider.body}\nEOF"
+    command = "kubectl apply -f -<<EOF\n${data.http.csi_secrets_store_gcp_provider.response_body}\nEOF"
+
   }
 }

@@ -1,25 +1,24 @@
 provider "google" {
-  alias       = "example"
-  region      = "us-west1"
-  project     = "steel-aria-259723"
-  credentials = file("./account.json")
+  region  = "us-central1"
+  project = "xx-xx-xx-xx"
 }
 
-
-module "gcp" {
-  source                 = "../../gcp"
-  project_id             = "steel-aria-259723"
-  cluster_username       = "cluster-name"
-  cluster_password       = "cluster-password"
-  sql_enabled            = true
-  sql_master_username    = "user"
-  sql_master_password    = "pass"
-  environment_name       = "example"
-  region                 = "us-west1"
-  nodes_max_size         = 2
-  nodes_min_size         = 1
-  nodes_desired_capacity = 2
-  providers = {
-    "google" = "google.example"
-  }
+module "gke" {
+  source                    = "../../"
+  project                   = "xx-xx-xx-xx"
+  environment_name          = "example"
+  machine_type              = "e2-medium"
+  image_type                = "UBUNTU_CONTAINERD"
+  location                  = "us-central1-a"
+  min_master_version        = "1.30.9-gke.1046000"
+  sql_master_username       = "root"
+  sql_master_password       = "pass"
+  initial_node_count        = 1
+  min_node_count            = 1
+  max_node_count            = 1
+  disk_size_gb              = 20
+  csi_secrets_store_enabled = true
+  kms_enabled               = true
+  sql_enabled               = true
+  redis_enabled             = true
 }

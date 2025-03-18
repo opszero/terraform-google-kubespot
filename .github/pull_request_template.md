@@ -9,7 +9,7 @@ Ensure the following tasks are completed.
 - [ ] Are tests included?
   - [ ] Are the tests running?
 - [ ] Are the names of the files correct?
-- [ ] Add PR/Issue to opsZero Project and set to `Review` column
+- [ ] Add PR/Issue to opsZero project and set to `Review` column
 
 # Reviewer Checklist
 

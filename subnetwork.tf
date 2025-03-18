@@ -32,18 +32,33 @@ resource "google_compute_global_address" "private_ip_address" {
   network       = google_compute_network.network.self_link
 }
 
-
-
 resource "null_resource" "sql_vpc_lock" {
   depends_on = [google_service_networking_connection.private_vpc_connection]
 }
-// Set so we can talk to Services like Cloud SQL.
 
-
-// Bug: If the private_ip_address changes then this will not work correctly.
-// Workaround change reserved_peering_ranges = [] `terraform apply` and then change it back and `terraform apply`
 resource "google_service_networking_connection" "private_vpc_connection" {
   network                 = google_compute_network.network.self_link
   service                 = "servicenetworking.googleapis.com"
   reserved_peering_ranges = [google_compute_global_address.private_ip_address.name]
+}
+
+resource "google_compute_router" "nat_router" {
+  name    = var.environment_name
+  region  = var.region
+  network = google_compute_network.network.self_link
+  project = var.project
+}
+
+resource "google_compute_router_nat" "nat_config" {
+  name                               = var.environment_name
+  router                             = google_compute_router.nat_router.name
+  region                             = var.region
+  project                            = var.project
+  nat_ip_allocate_option             = "AUTO_ONLY"
+  source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
+
+  log_config {
+    enable = true
+    filter = "ERRORS_ONLY"
+  }
 }
