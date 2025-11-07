@@ -98,11 +98,11 @@ gcloud container clusters get-credentials <clustername> --region us-central1
 |------|-------------|
 | <a name="output_private_vpc_network"></a> [private\_vpc\_network](#output\_private\_vpc\_network) | n/a |
 | <a name="output_sql_database"></a> [sql\_database](#output\_sql\_database) | n/a |
-# ðŸš€ Built by opsZero!
+# 🚀 Built by opsZero!
 
 <a href="https://opszero.com"><img src="https://opszero.com/img/common/opsZero-Logo-Large.webp" width="300px"/></a>
 
-[opsZero](https://opszero.com) provides software and consulting for Cloud + AI. With our decade plus of experience scaling some of the worldâ€™s most innovative companies we have developed deep expertise in Kubernetes, DevOps, FinOps, and Compliance.
+[opsZero](https://opszero.com) provides software and consulting for Cloud + AI. With our decade plus of experience scaling some of the world’s most innovative companies we have developed deep expertise in Kubernetes, DevOps, FinOps, and Compliance.
 
 Our software and consulting solutions enable organizations to:
 
